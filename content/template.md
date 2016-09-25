@@ -19,7 +19,93 @@ Grundsätzlich stehen folgende Funktionen zur Verfügung:
 
 Eine komplette Liste der Funktionalität steht unter http://freemarker.org/ zur Verfügung.
 
-## Modell
+## Zugriff auf Modell
+
+### Globale Elemente
+
+Globale Elemente die in jedem Template zur Verfügung stehen:
+
+* appServer (current Applicationserver Resource)
+* node (current Node Resource) 
+* env (Environment)
+* deployment
+* deploymentId
+* runtime
+* deploy (true wenn in deploymodus)
+
+### Property
+
+Der Zugriff auf ein Property erfolgt über die Angabe seines namens (propertyName), die Properties der aktuellen Resource befinden sich direkt unter root:
+
+```
+${propertyName}
+oder
+${propertyName.currentValue}
+```
+
+Will man beispielsweise auf ein ApplicationServer Property zugreifen, wird dies wie folgt gemacht:
+
+```
+${appServer.propertyName}
+oder
+${appServer.propertyName.currentValue}
+```
+
+#### Zugriff auf PropertyDescriptoren
+Auf die Metainformationen einer Property kann mittels seines TechnicalKeys, gefolgt von ``_descriptor`` zugegriffen werden. Für ein Property mit dem TechnicalKey "propertyName" sähe dies im Template so aus:
+
+```
+${propertyName._descriptor.propertyName}
+${propertyName._descriptor.displayName}
+${propertyName._descriptor.encrypt}
+${propertyName._descriptor.valueOptional}
+${propertyName._descriptor.keyOptional}
+${propertyName._descriptor.validationLogic}
+${propertyName._descriptor.propertyComment}
+${propertyName._descriptor.cardinalityProperty}
+${propertyName._descriptor.technicalKey}
+${propertyName._descriptor.defaultValue}
+${propertyName._descriptor.exampleValue}
+${propertyName._descriptor.machineInterpretationKey}
+```
+
+Sollte ein TechnicalKey einen Punkt "." enthalten, so ist dieser via Backslash ``\`` zu escapen:
+```
+${property\.Name._descriptor.propertyName}
+```
+
+Mittels der hasContent Methode auf einem Property kann abgefragt werden, ob ein Wert vorhanden ist oder nicht.
+gibt true zurück wenn currentValue null oder [empty String] ist.
+```
+${propertyName.hasContent}
+```
+
+#### PropertyTags
+Eine Liste der dem Property zugeordneten Tags, ist via 
+```
+${propertyName._descriptor.tags}
+```
+verfügbar. Mittels
+```
+${propertyName._descriptor.hasTag("tag")}
+```
+kann überprüft werden, ob dem Property ein bestimmter Tag zugeordnet ist.
+
+#### Auflösen der PropertyWerte im Generator
+Ein PropertyDescriptor kann mehrere PropertyValues besitzen - für einen bestimmten Kontext gibt es aber immer nur einen einzigen gültigen Wert. Die Auswertung der PropertyValues für einen bestimmten Kontext folgt einer spezifischen Priorisierungsreihenfolge: Für einen Kontext/eine Umgebung wird versucht, dieser aufgrund der Kontexthierarchie aufzulösen - also z.B. zuerst "B", wenn dort nichts definiert wurde auf "DEV" ? "GLOBAL". Dabei sollen Werte auf der Instanz wie auch auf deren Typen (inkl. Typhierarchie) geprüft. Dabei kommen die folgenden beiden Möglichkeiten erst dann zum Tragen wenn bei der Auflösung kein PropertyValue definiert wurde (sprich vom Benutzer kein Wert gesetzt wurde):
+
+* Berücksichtigung synthetisierter Werte: Besitzt der Propertydescriptor ein MachineInterpretation-Key, so wird der Wert zum Auflösungszeitpunkt aufgelöst - der aufgelöste Wert wird nur für die aktuelle Generierung verwendet und wird nicht persistiert. (vgl. \ref{subsec:functonalProperties})
+* Berücksichtigung eines Default-Values: Der allenfalls auf dem Propertydescriptor definierte Default-Wert übernommen.
+
+#### Dynamische Properties
+
+Der Wert von dynamischen Properties wird nicht von einem Benutzer definiert - stattdessen steht hinter einem dynamischen Property eine Auflösungslogik, welche den Wert herleitet. Ein gängiges Beispiel ist hier die Auflösung einer Webservice-Endpoint-URL zu erwähnen. AMW definiert dynamische Properties in Form eines MachineInterpretationKey (MIK).  Anhand dieses Keys wird in AMW definiert, welche Funktionalität verwendet wird um dieses dynamisch Property abzufüllen.
+Ist ein dynamisches Property optional und erhält nach dessen Auflösung einen leeren Wert, so wird dieses nicht in das Template geschrieben. Der Wert des dynamischen Properties kann vom Benutzer überschrieben werden. Ist ein Wert vom Benutzer gesetzt, wird die Auflöselogik nicht ausgeführt.
+Terminologisch können wir nun zwischen den dynamischen properties und den einfachen Properties unterscheiden. Die einfachen Properties entsprechen den bisher in AMW etablierten Properties.
+Nun haben wir gesehen, was dynamische Properties sind, wie sie eingesetzt werden und wie sie sich von einfachen Properties unterscheiden. Für die Umsetzung ist von dynamischen Properties müssen deren Bestandteile analysiert werden. Konzeptionell besteht ein dynamisches Property aus zwei Teilen: 
+
+* Enthält vom Benutzer definierte Logik, wie ein Propertywert basierend auf einfachen Properties und Funktionen aufgelöst wird.
+* Das dynamische Property unterscheidet sich vom einfachen Property durch die Angabe des MIK im Propertydeskriptor. Selbst enthält das dynamische Property keine Funktionalität.
 
 
 ## Funktionen
@@ -38,3 +124,12 @@ ${myglobalFunction()}
 ### Resource Funktionen
 
 Auf Resource Ebene können Funktionen ebenso definiert werden, innerhalb der Templateausführung stehen die Funktionen dann auf der entsprechenden Resource zur Verfügung.
+Diese Funktionen werden verwendet um in dynamischen Properties als MIKs entsprechend Werte aufzulösen.
+
+Diese Funktionen können auch in einem Template aufgerufen werden, wenn man sich auf der selben Resource befindet, sieht das wie folgt aus:
+
+```
+
+${amwfunction.myFunction()}
+
+```
