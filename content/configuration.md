@@ -78,9 +78,9 @@ Wird das System Property ``liquibase.enabled`` auf false geestellt, ist Liquibas
 
 #### JDBC Driver
 
-In der obigen Datasource Konfiguration ist mittels ``<driver>ojdbc6_g.jar</driver>`` definiert, dass die Datasource direkt unter ``standalone/deployemnts`` ein Jar File ``ojdbc6_g.jar`` erwartet, das den Treiber beinhaltet.
+In der obigen Datasource Konfiguratio ist der Treiber via JBoss Module Mechanismus deployed werden: https://access.redhat.com/documentation/en-US/JBoss_Enterprise_Application_Platform/6/html/Administration_and_Configuration_Guide/Example_Oracle_Datasource.html
 
-Als zweite Variante kann der JDBC Driver auch über den JBoss Module Mechanismus deployed werden: https://access.redhat.com/documentation/en-US/JBoss_Enterprise_Application_Platform/6/html/Administration_and_Configuration_Guide/Example_Oracle_Datasource.html
+Als zweite Variante kann der JDBC Driver ``ojdbc6_g.jar`` auch nach ``standalone/deployemnts`` kopiert werden und mittels ``<driver>ojdbc6_g.jar</driver>`` darauf verwiesen werden.
 
 ### Mail Session
 
