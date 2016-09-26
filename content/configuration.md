@@ -11,7 +11,7 @@ AMW verwendet eine Datenbank um das Modell und die Konfiguration persistent abzu
 Dafür muss eine Datasource mit dem Namen **amwDS** ``java:jboss/datasources/amwDS`` eingerichtet werden.
 Soll AMW die Datenbankchanges beim Starten selber einspielen, muss dafür zusätzlich die Datasource **amwLiquibaseDS** ``java:jboss/datasources/amwLiquibaseDS`` eingerichtet sein.
 
-```
+``` XML
 <subsystem xmlns="urn:jboss:domain:datasources:1.2">
    <datasources>
       <xa-datasource jndi-name="java:jboss/datasources/amwDS" pool-name="amwDS" use-java-context="true" use-ccm="true">
@@ -88,7 +88,7 @@ AMW versendet bei Deployments an interessierte User Informationen über den Stat
 
 So muss im ``<subsystem xmlns="urn:jboss:domain:mail:1.1">`` die folgende Mailsession eingerichtet werden.
 
-```
+``` XML
 <subsystem xmlns="urn:jboss:domain:mail:1.1">
     <mail-session jndi-name="java:/AutomationMiddlewareMail" debug="true">
         <smtp-server outbound-socket-binding-ref="mail-smtp"/>
@@ -99,7 +99,7 @@ So muss im ``<subsystem xmlns="urn:jboss:domain:mail:1.1">`` die folgende Mailse
 Falls der Applikationserver sich beim Versenden von Emails beim SMTP Server anmelden muss, und sich der smtp server von der default konfig unterscheidet, muss allenfalls auch ein zusätzlicher smtp Server eingerichtet werden
 
 Unter socket-binding-group
-```
+``` XML
 <outbound-socket-binding name="mail-smtp-amw">
     <remote-destination host="mail.example.com" port="465"/>
 </outbound-socket-binding>
@@ -107,7 +107,7 @@ Unter socket-binding-group
 
 und entsprechend die Mail Session
 
-```
+``` XML
 <subsystem xmlns="urn:jboss:domain:mail:1.1">
     <mail-session jndi-name="java:/AutomationMiddlewareMail" debug="true">
         <smtp-server outbound-socket-binding-ref="mail-smtp-amw">
@@ -127,7 +127,7 @@ AMW Implementiert ein Rollenmodell, das direkt in die JBoss Authentisierung inte
 
 Diese Integration sollte bloss für Proof Of Concept oder Testinstalltionen verwendet werden.
 
-```
+``` XML
 <security-domain name="jboss-secure">
     <authentication>
         <login-module code="org.jboss.security.auth.spi.UsersRolesLoginModule" flag="required">
@@ -161,7 +161,7 @@ Für produktive Umgebungen sollte der JBoss entsprechend an ein LDAP oder Active
 
 Die folgende Konfiguration wird der Applikation über Java Systemproperties zur Verfügung gestellt, diese können im standalone.xml unter server --> system-properties konfiguriert werden
 
-```
+``` XML
 <system-properties>
     <property name="amw.generatorPath" value="/tmp/amw/gen"/>
     ...
