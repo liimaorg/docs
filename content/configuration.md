@@ -6,49 +6,85 @@ In diesem Kapitel wird beschrieben wie einerseits der Applikationserver und ande
 
 ### Datasource:
 
-AMW verwendet eine Datenbank um das Modell und die Konfiguration persistent abzuspeichern. Die Datenbank wird über eine Datasource im standalone.xml im entsprechenden Applikationsserver konfiguriert.
+AMW verwendet eine Datenbank um das Modell und die Konfiguration persistent abzuspeichern. Die Datenbank wird Ã¼ber eine Datasource im standalone.xml im entsprechenden Applikationsserver konfiguriert.
 
-Dafür muss eine Datasource mit dem Namen **amwDS** ``java:jboss/datasources/amwDS`` eingerichtet werden:
-
-```
-<datasource jndi-name="java:jboss/datasources/amwDS" pool-name="java:jboss/datasources/amwDS_Pool" enabled="true" use-java-context="true" use-ccm="true">
-    <connection-url>jdbc:oracle:thin:@//server:1521/schema</connection-url>
-    <driver>ojdbc6_g.jar</driver>
-    <security>
-        <user-name>Username</user-name>
-        <password>Password</password>
-    </security>
-</datasource>
-```
-
-Soll AMW die Datenbankchanges beim Starten selber einspielen, muss dafür die Datasource **amwLiquibaseDS** ``java:jboss/datasources/amwLiquibaseDS`` entsprechend eingerichtet sein.
+DafÃ¼r muss eine Datasource mit dem Namen **amwDS** ``java:jboss/datasources/amwDS`` eingerichtet werden.
+Soll AMW die Datenbankchanges beim Starten selber einspielen, muss dafÃ¼r zusÃ¤tzlich die Datasource **amwLiquibaseDS** ``java:jboss/datasources/amwLiquibaseDS`` eingerichtet sein.
 
 ```
-<datasource jndi-name="java:jboss/datasources/amwLiquibaseDS" pool-name="java:jboss/datasources/amwLiquibaseDS_Pool" enabled="true" use-java-context="true" use-ccm="true">
-    <connection-url>jdbc:oracle:thin:@//server:1521/schema</connection-url>
-    <driver>ojdbc6_g.jar</driver>
-    <security>
-        <user-name>Username</user-name>
-        <password>Password</password>
-    </security>
-</datasource>
+<subsystem xmlns="urn:jboss:domain:datasources:1.2">
+   <datasources>
+      <xa-datasource jndi-name="java:jboss/datasources/amwDS" pool-name="amwDS" use-java-context="true" use-ccm="true">
+         <driver>oracle</driver>
+         <xa-datasource-property name="URL">jdbc:oracle:thin:@//server:1521/schema</xa-datasource-property>
+         <xa-datasource-property name="driverType">4</xa-datasource-property>
+         <security>
+            <user-name>User</user-name>
+            <password>Password</password>
+         </security>
+         <xa-pool>
+            <min-pool-size>0</min-pool-size>
+            <max-pool-size>30</max-pool-size>
+            <prefill>false</prefill>
+            <is-same-rm-override>false</is-same-rm-override>
+            <no-tx-separate-pools>true</no-tx-separate-pools>
+         </xa-pool>
+         <validation>
+            <background-validation-millis>60000</background-validation-millis>
+            <validate-on-match>false</validate-on-match>
+            <background-validation>true</background-validation>
+            <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker" />
+            <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker" />
+            <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter" />
+         </validation>
+      </xa-datasource>
+      
+      <xa-datasource jndi-name="java:jboss/datasources/amwLiquibaseDS" pool-name="amwLiquibaseDS" use-java-context="true" use-ccm="true">
+         <driver>oracle</driver>
+         <xa-datasource-property name="URL">jdbc:oracle:thin:@//server:1521/schema</xa-datasource-property>
+         <xa-datasource-property name="driverType">4</xa-datasource-property>
+         <security>
+            <user-name>User</user-name>
+            <password>Password</password>
+         </security>
+         <xa-pool>
+            <min-pool-size>0</min-pool-size>
+            <max-pool-size>30</max-pool-size>
+            <prefill>false</prefill>
+            <is-same-rm-override>false</is-same-rm-override>
+            <no-tx-separate-pools>true</no-tx-separate-pools>
+         </xa-pool>
+         <validation>
+            <background-validation-millis>60000</background-validation-millis>
+            <validate-on-match>false</validate-on-match>
+            <background-validation>true</background-validation>
+            <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker" />
+            <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker" />
+            <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter" />
+         </validation>
+      </xa-datasource>
+      <drivers>
+         <driver name="oracle" module="com.oracle">
+            <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+         </driver>
+      </drivers>
+   </datasources>
+</subsystem>
 ```
 
-**Wichtig:** die Datasource muss auf die gleiche Datenbank zeigen. Der einzige Unterschied kann der Datenbank User sein, falls man die Berechtigungen so einstellen will, dass nur der User der amwLiquibaseDS Datasource Rechte hat um Schemaändergungen einzuspielen.
+**Wichtig:** die amwLiquibaseDS Datasource muss auf die gleiche Datenbank zeigen. Der einzige Unterschied kann der Datenbank User sein, falls man die Berechtigungen so einstellen will, dass nur der User der amwLiquibaseDS Datasource Rechte hat um SchemaÃ¤ndergungen einzuspielen.
 
-Existiert die Datasource amwLiquibaseDS nicht, werden keine Datenbank Changesets eingespielt. 
-
-Wird das System Property ``liquibase.enabled`` auf false geestellt, werden die Changes auch nicht eingespielt.
+Wird das System Property ``liquibase.enabled`` auf false geestellt, ist Liquibase ausgeschaltet und die Datasource amwLiquibaseDS muss nicht definiert werden.
 
 #### JDBC Driver
 
 In der obigen Datasource Konfiguration ist mittels ``<driver>ojdbc6_g.jar</driver>`` definiert, dass die Datasource direkt unter ``standalone/deployemnts`` ein Jar File ``ojdbc6_g.jar`` erwartet, das den Treiber beinhaltet.
 
-Als zweite Variante kann der JDBC Driver auch über den JBoss Module Mechanismus deployed werden: https://access.redhat.com/documentation/en-US/JBoss_Enterprise_Application_Platform/6/html/Administration_and_Configuration_Guide/Example_Oracle_Datasource.html
+Als zweite Variante kann der JDBC Driver auch Ã¼ber den JBoss Module Mechanismus deployed werden: https://access.redhat.com/documentation/en-US/JBoss_Enterprise_Application_Platform/6/html/Administration_and_Configuration_Guide/Example_Oracle_Datasource.html
 
 ### Mail Session
 
-AMW versendet bei Deployments an interessierte User Informationen über den Status der entsprechenden Deployments, dafür benötigt AMW eine MailSession mit dem Namen **AutomationMiddlewareMail** ``java:/AutomationMiddlewareMail``
+AMW versendet bei Deployments an interessierte User Informationen Ã¼ber den Status der entsprechenden Deployments, dafÃ¼r benÃ¶tigt AMW eine MailSession mit dem Namen **AutomationMiddlewareMail** ``java:/AutomationMiddlewareMail``
 
 So muss im ``<subsystem xmlns="urn:jboss:domain:mail:1.1">`` die folgende Mailsession eingerichtet werden.
 
@@ -60,7 +96,7 @@ So muss im ``<subsystem xmlns="urn:jboss:domain:mail:1.1">`` die folgende Mailse
 </subsystem>
 ```
 
-Falls der Applikationserver sich beim Versenden von Emails beim SMTP Server anmelden muss, und sich der smtp server von der default konfig unterscheidet, muss allenfalls auch ein zusätzlicher smtp Server eingerichtet werden
+Falls der Applikationserver sich beim Versenden von Emails beim SMTP Server anmelden muss, und sich der smtp server von der default konfig unterscheidet, muss allenfalls auch ein zusÃ¤tzlicher smtp Server eingerichtet werden
 
 Unter socket-binding-group
 ```
@@ -87,9 +123,9 @@ AMW Implementiert ein Rollenmodell, das direkt in die JBoss Authentisierung inte
 
 #### Username Passwort File (PoC Umgebungen)
 
-über die beiden Files JBOSS_HOME/standalone/configuration/application-users.properties und JBOSS_HOME/standalone/configuration/application-roles.properties können die User konfiguriert werden.
+Ã¼ber die beiden Files JBOSS_HOME/standalone/configuration/application-users.properties und JBOSS_HOME/standalone/configuration/application-roles.properties kÃ¶nnen die User konfiguriert werden.
 
-Diese Integration sollte bloss für Proof Of Concept oder Testinstalltionen verwendet werden.
+Diese Integration sollte bloss fÃ¼r Proof Of Concept oder Testinstalltionen verwendet werden.
 
 ```
 <security-domain name="jboss-secure">
@@ -102,7 +138,7 @@ Diese Integration sollte bloss für Proof Of Concept oder Testinstalltionen verwe
 </security-domain>
 ```
 
-In AMW stehen die folgenden Rollen zur Verfügung:
+In AMW stehen die folgenden Rollen zur VerfÃ¼gung:
 
 * viewer
 * config_admin
@@ -118,12 +154,12 @@ In AMW stehen die folgenden Rollen zur Verfügung:
 
 #### Produktive Umgebungen
 
-Für produktive Umgebungen sollte der JBoss entsprechend an ein LDAP oder ActiveDirectory angebunden werden.
+FÃ¼r produktive Umgebungen sollte der JBoss entsprechend an ein LDAP oder ActiveDirectory angebunden werden.
 
 
 ## Konfiguration der Applikation
 
-Die folgende Konfiguration wird der Applikation über Java Systemproperties zur Verfügung gestellt, diese können im standalone.xml unter server --> system-properties konfiguriert werden
+Die folgende Konfiguration wird der Applikation Ã¼ber Java Systemproperties zur VerfÃ¼gung gestellt, diese kÃ¶nnen im standalone.xml unter server --> system-properties konfiguriert werden
 
 ```
 <system-properties>
