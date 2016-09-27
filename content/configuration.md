@@ -143,14 +143,27 @@ In AMW stehen die folgenden Rollen zur Verfügung:
 * viewer
 * config_admin
 * app_developer
+* admin_developer
 * server_admin
+* overwrite_foreignables
+* shakedown_tester
+* shakedown_admin
 * admin_deployer
 * test_deployer
 * developer_deployer
 * env_management_deployer
-* shakedown_tester
-* shakedown_admin
-* overwrite_foreignables
+
+Diese werden dann typischerweise so gruppiert (JBoss roles.properties):
+```
+# Kann alles
+admin=viewer,config_admin,app_developer,server_admin,shakedown_tester,shakedown_admin,overwrite_foreignables,test_deployer,developer_deployer,env_management_deployer,admin_deployer
+# Kann Konfiguration auf Applikations Ressourcen und auf develepment Umgebungen Deployen
+app_developer=app_developer,viewer,developer_deployer
+# Kann zusätzlich neue AppServer und Applikationen erstellen
+admin_developer=admin_developer,app_developer,viewer,developer_deployer
+# Kann auf allen Umgebung ausser Produktion deployen
+env_management_deployer=viewer,developer_deployer,env_management_deployer
+```
 
 #### Produktive Umgebungen
 
