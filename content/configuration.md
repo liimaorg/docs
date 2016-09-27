@@ -140,6 +140,7 @@ Diese Integration sollte bloss für Proof Of Concept oder Testinstalltionen verw
 
 In AMW stehen die folgenden Rollen zur Verfügung:
 
+Config Rollen:
 * viewer
 * config_admin
 * app_developer
@@ -148,21 +149,25 @@ In AMW stehen die folgenden Rollen zur Verfügung:
 * overwrite_foreignables
 * shakedown_tester
 * shakedown_admin
+
+Deployer Rollen:
 * admin_deployer
 * test_deployer
 * developer_deployer
 * env_management_deployer
 
-Diese werden dann typischerweise so gruppiert (JBoss roles.properties):
+Diese werden dann typischerweise so gruppiert (JBoss role-mapping.properties):
 ```
+# Nur ansehen
+viewer_role=viewer
 # Kann alles
-admin=viewer,config_admin,app_developer,server_admin,shakedown_tester,shakedown_admin,overwrite_foreignables,test_deployer,developer_deployer,env_management_deployer,admin_deployer
+admin_role=viewer,config_admin,app_developer,server_admin,shakedown_tester,shakedown_admin,overwrite_foreignables,test_deployer,developer_deployer,env_management_deployer,admin_deployer
 # Kann Konfiguration auf Applikations Ressourcen und auf develepment Umgebungen Deployen
-app_developer=app_developer,viewer,developer_deployer
+app_developer_role=app_developer,viewer,developer_deployer
 # Kann zusätzlich neue AppServer und Applikationen erstellen
-admin_developer=admin_developer,app_developer,viewer,developer_deployer
+admin_developer_role=admin_developer,app_developer,viewer,developer_deployer
 # Kann auf allen Umgebung ausser Produktion deployen
-env_management_deployer=viewer,developer_deployer,env_management_deployer
+env_management_deployer_role=viewer,developer_deployer,test_deployer,env_management_deployer
 ```
 
 #### Produktive Umgebungen
