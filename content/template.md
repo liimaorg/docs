@@ -28,6 +28,7 @@ Globale Elemente die in jedem Template zur Verfügung stehen:
 * appServer (current Applicationserver Resource)
 * node (current Node Resource)
 * runtime
+* applications
 * env (Environment)
 * deployment
 * deploymentId
@@ -42,6 +43,13 @@ ${appServer.propertyName}
 oder
 ${appServer.propertyName.currentValue}
 ```
+
+Nun kann via appServer mittels
+```
+${appServer.testapplication.name}
+
+```
+direkt auf die Applikation testapplikation zugegriffen werden
 
 #### node
 
@@ -63,6 +71,97 @@ oder
 ${runtime.propertyName.currentValue}
 ```
 
+#### applications
+
+unter ``applications`` stehen alle Applikationen die generiert werden als Hash zur Verfügung
+
+```
+<#list applications?values as app>
+  ${app.name}
+</#list>
+```
+
+#### Umgebung (env)
+
+unter ``env`` stehen einem die Informationen der aktuellen Umgebung zur Verfügung
+
+```
+${env.id}
+${env.name}
+${env.domain}
+```
+Als Resultat wird das folgende ausgegeben
+```
+5 # id
+D #Environment
+Dev #Domain
+```
+
+#### Deployment
+
+unter ``deployment`` stehen einem die Informationen zum aktuellen Deployment zur Verfügung
+
+```
+${deployment.id} 
+${deployment.trackingId} # Tracking ID if mutliple Deployments are done at the same time
+${deployment.generationStateDate} # Date of generation
+${deployment.requestUser} 
+${deployment.jobCreationDate}
+${deployment.confirmationUser}
+${deployment.confirmationDate}
+${deployment.amwLogFile} # path of logfile eg. /tmp/amw/logs/123_node1.log
+${deployment.targetLogPrefix} # Prefix of the current log location eg. /tmp/amw/logs/-1_
+${deployment.generationdir} # the current generationDir eg. /tmp/amw/gen/testapplicationserver/D_node1_2016-09-28-17-23-47.800_test
+
+${deployment.generationModus} # Values TEST (Testgeneration), DEPLOY (Deployment), PREDEPLOY (Predeploy phase), SIMULATE (simulation)
+
+## Release Information
+${deployment.release.id}
+${deployment.release.name}
+${deployment.release.installationDate}
+
+## Runtime analog ${runtime}
+${deployment.runtime.id}
+${deployment.runtime.name}
+
+## NodeJob 
+${deployment.nodejob.id}
+
+```
+ 
+##### DeploymentId und deploy true
+
+für die beiden properties ``deloymentid`` und ``deploy`` um zu abfragen ob es sich um den Deploymodus handelt, gibt es die beiden Convenience-Methoden.
+
+```
+${deploymentId}
+${deploy}
+
+```
+
+
+### Relations
+
+Auf relatete Resroucen kann wie folgt zu gegriffen werden.
+
+#### direkter Zugriff über Name
+
+Das folgende Template, das auf einer applikation sitzt greift auf die Properties der angehängten Datenbank mit dem Namen **mysql** zu.
+
+```
+${mysql.name}
+
+```
+
+#### via consumedResTypes
+
+consumedResTypes ist eine Gruppierung der consumed Relations über den Typ
+
+```
+${consumedResTypes.Database.mysql.name}
+
+```
+
 
 ### Property
 
@@ -81,6 +180,8 @@ ${appServer.propertyName}
 oder
 ${appServer.propertyName.currentValue}
 ```
+
+
 
 #### Zugriff auf PropertyDescriptoren
 Auf die Metainformationen einer Property kann mittels seines TechnicalKeys, gefolgt von ``_descriptor`` zugegriffen werden. Für ein Property mit dem TechnicalKey "propertyName" sähe dies im Template so aus:
