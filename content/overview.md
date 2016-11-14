@@ -1,10 +1,10 @@
 # AMW Overview
 
-Mit AMW können sämtliche Konfigurationen Ihrer Applikationsumgebung auf beliebig vielen Umgebungen in unterschiedlichen Versionen verwalten und automatisiert deployen.
+Mit AMW kÃ¶nnen Sie sÃ¤mtliche Konfigurationen Ihrer Applikationsumgebung auf beliebig vielen Umgebungen in unterschiedlichen Versionen verwalten und automatisiert deployen.
 
 ## Key Features
 
-AMW unterstützt die Middleware Konfiguration und Automatisierung auf den folgenden Ebenen:
+AMW unterstÃ¼tzt die Middleware Konfiguration und Automatisierung auf den folgenden Ebenen:
 
 * Serveraufbau
 * Applikationsverteilung
@@ -12,26 +12,26 @@ AMW unterstützt die Middleware Konfiguration und Automatisierung auf den folgend
 
 ### Strukturierte Verwaltung der Konfiguration
 
-Das generische Modell ermöglicht die strukturierte Verwaltung der Konfiguration und reduziert mögliche Redundanzen in Ihrer Konfiguration. Dank dem hierarchischen Aufbau können Property Werte global, auf Umgebungsebene, pro Applikationsserver oder pro Applikation definiert respektive überschrieben werden.
+Das generische Modell ermÃ¶glicht die strukturierte Verwaltung der Konfiguration und reduziert mÃ¶gliche Redundanzen in Ihrer Konfiguration. Dank dem hierarchischen Aufbau kÃ¶nnen Property Werte global, auf Umgebungsebene, pro Applikationsserver oder pro Applikation definiert respektive Ã¼berschrieben werden.
 
-### Abbilden von  Abhängigkeiten
+### Abbilden von  AbhÃ¤ngigkeiten
 
-Beziehungen zwischen Ressourcen (Applikationen, Datenbanken, Webservices) werden mit AMW abgebildet und können zusätzliche Konfigurationen und/oder Property-Werteanpassungen enthalten.
+Beziehungen zwischen Ressourcen (Applikationen, Datenbanken, Webservices) werden mit AMW abgebildet und kÃ¶nnen zusÃ¤tzliche Konfigurationen und/oder Property-Werteanpassungen enthalten.
 
 ### Templatebasierte Generierung beliebiger Konfiguration
 
-Die im generischen Modell abgebildeten Properties und deren Werte können mittels Runtime-spezifischen Templates in die von der Applikation und dem Applikationsserver benötigte Struktur generiert werden.
+Die im generischen Modell abgebildeten Properties und deren Werte kÃ¶nnen mittels Runtime-spezifischen Templates in die von der Applikation und dem Applikationsserver benÃ¶tigte Struktur generiert werden.
 
 ### Versionierung  und Historisierung
 
-Sämtliche Änderungen an der Konfiguration werden protokolliert und abgespeichert. Zusätzlich können explizite Konfigurationsstände übergreifend getagged und somit einmal erreichte Zustände gesichert werden.
+SÃ¤mtliche Ã„nderungen an der Konfiguration werden protokolliert und abgespeichert. ZusÃ¤tzlich kÃ¶nnen explizite KonfigurationsstÃ¤nde Ã¼bergreifend getagged und somit einmal erreichte ZustÃ¤nde gesichert werden.
 
 
 ### Automatisiertes Deployment von Applikation und Konfiguration
 
 Deployen von Applikationen und ganzen Umgebungen zeitgesteuert, per Knopfdruck oder via REST API integriert in Ihre Workflows und Deployment Pipelines.
  
-Das ausgelagerte Deploymentmodul ermöglicht das Anbinden von diversen Applikationsrepositories, aus denen die Deployables skriptgesteuert geladen respektive gebuildet werden können:
+Das ausgelagerte Deploymentmodul ermÃ¶glicht das Anbinden von diversen Applikationsrepositories, aus denen die Deployables skriptgesteuert geladen respektive gebuildet werden kÃ¶nnen:
 
 * Maven Repository
 * RPM Repository
@@ -41,9 +41,9 @@ Das ausgelagerte Deploymentmodul ermöglicht das Anbinden von diversen Applikatio
 
 ### Environment  Health Check
 
-Mit dem Environment Health Check kann nach einem Deployment einer Applikation oder einer gesamten Umgebung deren Status und Funktionalität überprüft werden. So können auf Applikationsebene sogenannte Shakedowntests definiert werden, welche zum Überprüfen der Applikation und deren näheren Umgebung ausgeführt werden.
+Mit dem Environment Health Check kann nach einem Deployment einer Applikation oder einer gesamten Umgebung deren Status und FunktionalitÃ¤t Ã¼berprÃ¼ft werden. So kÃ¶nnen auf Applikationsebene sogenannte Shakedowntests definiert werden, welche zum ÃœberprÃ¼fen der Applikation und deren nÃ¤heren Umgebung ausgefÃ¼hrt werden.
 
 ### Abbildung von  Entwicklungsprozessen
 
-Über das flexible Rollen- und Berechtigungskonzept können Sie die beteiligten Stellen im Entwicklungsprozess dynamisch abbilden.
-So wird beispielsweise der Software Ingenieur berechtigt, Konfigurationen für seine Applikation auf den definierten Entwicklungsumgebungen eigenständig zu verwalten und/oder Deployments auf anderen Umgebungen anzufordern, welche nach einer weiteren Bestätigung ausgeführt werden.
+Ãœber das flexible Rollen- und Berechtigungskonzept kÃ¶nnen Sie die beteiligten Stellen im Entwicklungsprozess dynamisch abbilden.
+So wird beispielsweise der Software Ingenieur berechtigt, Konfigurationen fÃ¼r seine Applikation auf den definierten Entwicklungsumgebungen eigenstÃ¤ndig zu verwalten und/oder Deployments auf anderen Umgebungen anzufordern, welche nach einer weiteren BestÃ¤tigung ausgefÃ¼hrt werden.
