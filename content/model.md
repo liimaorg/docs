@@ -1,12 +1,12 @@
 # AMW Datenmodell
 
-GrundsÃ¤tzlich besteht das Modell in dem Sie die Konfiguration in AMW abbilden aus den folgenden Grundelementen:
+Grundsätzlich besteht das Modell in dem Sie die Konfiguration in AMW abbilden aus den folgenden Grundelementen:
 
 * ApplicationServer (AS) - Der Applikationsserver auf dem die Applikationen deployed werden
 * Application (App) - Die zu deployende Applikation
 * Node - Der Node in Kombination mit einem AS entspricht einem Deployment des AS auf einem Server
 * Runtime - Die Runtime definiert am AS um welchen Applikationsserver es sich handelt, typischerweise JBoss EAP 6, JBoss EAP 7, Websphere, ...
-* Resources - Als Resourcen werden alle anderen Elemente bezeichnet, die an einem AS, einer App, einer Node oder Runtime als AbhÃ¤ngigkeiten angehÃ¤ngt werden kÃ¶nnen
+* Resources - Als Resourcen werden alle anderen Elemente bezeichnet, die an einem AS, einer App, einer Node oder Runtime als Abhängigkeiten angehängt werden können
  * Datenbank an Applikation
  * Webservice SOAP / REST
  * Queue
@@ -20,68 +20,68 @@ Jede Ressource besitzt einen **Namen** und einen **ResourceType**
 
 ## ResourceTypes
 
-ResourceTypes entsprechen der generalisierten AusprÃ¤gung von Ressourcen. So werden beispielsweise auf dem RessourceType ApplikationServer generelle Informationen, Templates, Properties usw. eingepflegt, die sonst auf Instanzebene redundat pro Applicationserver verwaltet werden mÃ¼ssten.
+ResourceTypes entsprechen der generalisierten Ausprägung von Ressourcen. So werden beispielsweise auf dem RessourceType ApplikationServer generelle Informationen, Templates, Properties usw. eingepflegt, die sonst auf Instanzebene redundat pro Applicationserver verwaltet werden müssten.
 
-Man hat also damit die MÃ¶glichkeit, generell geltende Sachen fÃ¼r alle Applikationsserver einmal zu definieren.
+Man hat also damit die Möglichkeit, generell geltende Sachen für alle Applikationsserver einmal zu definieren.
 
-Ein ResourceInstanz ist immer einerseits Ã¼ber den ResourceType und Ã¼ber die effektive Instanz definiert.
+Ein ResourceInstanz ist immer einerseits über den ResourceType und über die effektive Instanz definiert.
 
-Auf ResourceTypes kÃ¶nnen die folgenden Elemente definiert werden:
+Auf ResourceTypes können die folgenden Elemente definiert werden:
 
 * PropertyDescriptoren (PropertyKeys)
 * PropertyWerte
 * Templates
 * Functions
 
-Auf ResourceInstance Ebene kÃ¶nnen folgende Elemente definiert werden:
+Auf ResourceInstance Ebene können folgende Elemente definiert werden:
 
-* ZusÃ¤tzliche PropertyDescriptoren (ZusÃ¤tzlich zu den Descriptoren der ResourceTypes)
+* Zusätzliche PropertyDescriptoren (Zusätzlich zu den Descriptoren der ResourceTypes)
 * PropertyWerte
-* PropertyWerte von ResourceTypes kÃ¶nnen Ã¼berschrieben werden.
+* PropertyWerte von ResourceTypes können überschrieben werden.
 * Templates
 * Functions
 * Relations
 
 ## PropertyTypes
 
-Ein PropertyType (PropertyTypeEntity) ist als Template fÃ¼r PropertyDescriptors zu verstehen.
-Folgende Werte kÃ¶nnen auf dem PropertyType definiert werden:
+Ein PropertyType (PropertyTypeEntity) ist als Template für PropertyDescriptors zu verstehen.
+Folgende Werte können auf dem PropertyType definiert werden:
 
 * id: eindeutiger Identifier
 * propertyTypeName: Name des PropertyType
-* validationRegex: Validierungslogik fÃ¼r den Property-Wert
-* encrypt: gibt an ob der Property-Wert verschlÃ¼sselt wird
-* propertyTags: Einsatzzwecke, eine Sammlung von Gruppierungselementen, welche in den Templates als Selektionskriterium zur VerfÃ¼gung steht
+* validationRegex: Validierungslogik für den Property-Wert
+* encrypt: gibt an ob der Property-Wert verschlüsselt wird
+* propertyTags: Einsatzzwecke, eine Sammlung von Gruppierungselementen, welche in den Templates als Selektionskriterium zur Verfügung steht
 
 ## Properties
 
 In AMW wird ein Property (PropertyEntity) durch eine Kombination aus sogenannten PropertyDescriptors und Property-
-Values reprÃ¤sentiert: WÃ¤hrend ein PropertyDescriptor die eigentlichen Eigenschaften eines Properties enthÃ¤lt, stellen die PropertyValues kontextabhÃ¤ngige Werte eines Properties dar.
-Folgende Werte kÃ¶nnen auf dem PropertyDescriptor definiert werden:
+Values repräsentiert: Während ein PropertyDescriptor die eigentlichen Eigenschaften eines Properties enthält, stellen die PropertyValues kontextabhängige Werte eines Properties dar.
+Folgende Werte können auf dem PropertyDescriptor definiert werden:
 
 * id: eindeutiger Identifier
-* technicalKey: TechnicalKey - vollstÃ¤ndiger, technischer SchlÃ¼ssel inkl. komplexem Namespace zur Sicherstellung der Uniqueness
-* displayName: Optionaler Name fÃ¼r die Darstellung im GUI, da der propertyName in gewissen FÃ¤llen sehr lang und unleserlich sein kann
-* encrypt: gibt an ob der Property-Wert verschlÃ¼sselt wird
+* technicalKey: TechnicalKey - vollständiger, technischer Schlüssel inkl. komplexem Namespace zur Sicherstellung der Uniqueness
+* displayName: Optionaler Name für die Darstellung im GUI, da der propertyName in gewissen Fällen sehr lang und unleserlich sein kann
+* encrypt: gibt an ob der Property-Wert verschlüsselt wird
 * valueOptional: gibt an ob der Property-Wert null sein darf
-* keyOptional: gibt an, ob ein Property mit diesem Key im Generator zur VerfÃ¼gung gestellt werden muss
-* testing: gibt an ob das Property fÃ¼r Shakedowntests verwendet wird, diese Properties werden im GUI nur im Testingmode angezeigt.
-* validationLogic: Validierungslogik fÃ¼r den Property-Wert
+* keyOptional: gibt an, ob ein Property mit diesem Key im Generator zur Verfügung gestellt werden muss
+* testing: gibt an ob das Property für Shakedowntests verwendet wird, diese Properties werden im GUI nur im Testingmode angezeigt.
+* validationLogic: Validierungslogik für den Property-Wert
 * propertyComment: Kommentar zu diesem Property
-* cardinalityProperty: wenn dieser Wert nicht null ist, handelt es sich um ein SystemProperty und hat eine spezielle Bedeutung. Ein solche Property kann z.Bsp. nicht von einem Benutzer gelÃ¶scht werden. Ausserdem wirkt sich die KardinalitÃ¤t auf die Darstellungsreihenfolge im GUI aus.
-* propertyTypeEntity: das Template fÃ¼r das Property, gewisse Werte werden vom Typ Ã¼bernommen falls sie nicht im descriptor Ã¼berschrieben werden. Falls null handelt es sich um ein Custom-Property.
+* cardinalityProperty: wenn dieser Wert nicht null ist, handelt es sich um ein SystemProperty und hat eine spezielle Bedeutung. Ein solche Property kann z.Bsp. nicht von einem Benutzer gelöscht werden. Ausserdem wirkt sich die Kardinalität auf die Darstellungsreihenfolge im GUI aus.
+* propertyTypeEntity: das Template für das Property, gewisse Werte werden vom Typ übernommen falls sie nicht im descriptor überschrieben werden. Falls null handelt es sich um ein Custom-Property.
 * defaultValue: Defaultwert falls auf dem Property kein value gesetzt ist.
-* exampleValue: Beispielwert als Hilfe fÃ¼r den Benutzer
-* machineInterpretationKey:
-* propertyTags: Einsatzzwecke, eine Sammlung von Gruppierungselementen, welche in den Templates als Selektionskriterium zur VerfÃ¼gung steht
+* exampleValue: Beispielwert als Hilfe für den Benutzer
+* machineInterpretationKey: Ein zwischen MAIA und AMW geteilter Schlüssel, welcher die Zuweisung von Interpretationslogik zu dynamischen Propertywerten erlaubt.
+* propertyTags: Einsatzzwecke, eine Sammlung von Gruppierungselementen, welche in den Templates als Selektionskriterium zur Verfügung steht
 
 
 ## Beziehungen / Relations
 
-Ressourcen kÃ¶nnen Ã¼ber sogenannte Relations in Beziehung zu einander gesetzt werden:
+Ressourcen können über sogenannte Relations in Beziehung zu einander gesetzt werden:
 
-* App --> Datenbank, eine Applikation konsumiert eine Datenbank Ã¼ber eine ConsumedRelation
-* App --> Webservice, eine Applikation stellt einen Webservice Ã¼ber eine ProvidedRelation zur VerfÃ¼gung.
+* App --> Datenbank, eine Applikation konsumiert eine Datenbank über eine ConsumedRelation
+* App --> Webservice, eine Applikation stellt einen Webservice über eine ProvidedRelation zur Verfügung.
 
 
 ## Beispiel Applikation AMW
