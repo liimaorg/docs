@@ -6,7 +6,7 @@ Grundsätzlich besteht das Modell in dem Sie die Konfiguration in AMW abbilden au
 * Application (App) - Die zu deployende Applikation
 * Node - Der Node in Kombination mit einem AS entspricht einem Deployment des AS auf einem Server
 * Runtime - Die Runtime definiert am AS um welchen Applikationsserver es sich handelt, typischerweise JBoss EAP 6, JBoss EAP 7, Websphere, ...
-* Resources - Als Resourcen werden alle anderen Elemente die an einem AS, einer App, einer Node oder Runtime als Abhängigkeiten angehängt werden können
+* Resources - Als Resourcen werden alle anderen Elemente bezeichnet, die an einem AS, einer App, einer Node oder Runtime als Abhängigkeiten angehängt werden können
  * Datenbank an Applikation
  * Webservice SOAP / REST
  * Queue
@@ -14,7 +14,7 @@ Grundsätzlich besteht das Modell in dem Sie die Konfiguration in AMW abbilden au
  * ...
  
  
-Allegmein sprechen wir bei den obigen Elementen von **Ressourcen** die zu einander mittels Relations in Beziehung stehen. 
+Allgemein sprechen wir bei den obigen Elementen von **Ressourcen** die zu einander mittels Relations in Beziehung stehen. 
 
 Jede Ressource besitzt einen **Namen** und einen **ResourceType**
 
@@ -72,7 +72,7 @@ Folgende Werte können auf dem PropertyDescriptor definiert werden:
 * propertyTypeEntity: das Template für das Property, gewisse Werte werden vom Typ übernommen falls sie nicht im descriptor überschrieben werden. Falls null handelt es sich um ein Custom-Property.
 * defaultValue: Defaultwert falls auf dem Property kein value gesetzt ist.
 * exampleValue: Beispielwert als Hilfe für den Benutzer
-* machineInterpretationKey:
+* machineInterpretationKey: Ein zwischen MAIA und AMW geteilter Schlüssel, welcher die Zuweisung von Interpretationslogik zu dynamischen Propertywerten erlaubt.
 * propertyTags: Einsatzzwecke, eine Sammlung von Gruppierungselementen, welche in den Templates als Selektionskriterium zur Verfügung steht
 
 
@@ -86,7 +86,7 @@ Ressourcen können über sogenannte Relations in Beziehung zu einander gesetzt wer
 
 ## Beispiel Applikation AMW
 
-Als Beispiel hier beschreiben wir die Applikation AMW selber, AMW wird auf einem JBoss EAP 6.4 deployed und besitzt eine Datenbank und versendet via Mail Session Emails
+Als Beispiel hier beschreiben wir die Applikation AMW selber. AMW wird auf einem JBoss EAP 6.4 deployed, besitzt eine Datenbank und versendet via Mail Session Emails
 
 In unserem Beispiel wird nur eine Applikation auf den Applicationserver deployed.
 
