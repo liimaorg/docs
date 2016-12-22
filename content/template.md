@@ -239,6 +239,29 @@ Nun haben wir gesehen, was dynamische Properties sind, wie sie eingesetzt werden
 * Enthält vom Benutzer definierte Logik, wie ein Propertywert basierend auf einfachen Properties und Funktionen aufgelöst wird.
 * Das dynamische Property unterscheidet sich vom einfachen Property durch die Angabe des MIK im Propertydeskriptor. Selbst enthält das dynamische Property keine Funktionalität.
 
+## Logoutput in AMW verfügbar machen.
+
+Mit dem Feature aus https://github.com/a-gogo/agogo/pull/13 wird sämtlicher Output (Stdout, Stderr) der das AMW Run Script erzeugt gelesen und entprechend im GUI unter Logs pro Deployment zur Verfügung gestellt.
+
+Man hat gleichzeitig die Möglichkeit im AMW Run Script mittels Outputumleiten in das Logfile zu schreiben
+
+```
+echo "logoutput" >> ${deployment.amwLogFile}
+```
+**Wichtig**: es muss beachtet werden, dass der Output der manuell ins Logfile geschrieben wird, vor dem Output des Scripts im Logfile erscheint.
+
+### Eigenes Logfile
+Sämtliche Logfiles die für ein bestimmtes Deployment (id: 1) werden durch AMW eingelesen, sie müssen lediglich dem folgenden Namensschema entsprechen:
+
+``` 
+${deployment.targetLogPrefix}customlogfile.log
+# eg. /tmp/amw/logs/1_customlogfile.log
+```
+oder mit Nodenamen
+``` 
+${deployment.targetLogPrefix}_${node.name}_customlogfile.log
+# eg. /tmp/amw/logs/1_node1_customlogfile.log
+```
 
 ## Funktionen
 
