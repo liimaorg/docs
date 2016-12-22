@@ -263,6 +263,22 @@ ${deployment.targetLogPrefix}_${node.name}_customlogfile.log
 # eg. /tmp/amw/logs/1_node1_customlogfile.log
 ```
 
+## Spezifische Fehlermeldungen im Deployment Info Popup anzeigen
+Mit der folgenden Funktionaltäit können informationen aus dem Runscript, falls das Deployment failed (exit 1), als Meldung im Deployment Popup angezeigt werden.
+Sämtliche Zeilen die im Output wie folgt aussehen werden, bei einem failed Deployment geparsed und entsprechend im Popup angezeigt.
+
+``` 
+@{Diese Meldung wird angezeigt}
+``` 
+
+Konkret kann dies im Runscript wie folgt verwendet werden:
+
+``` 
+echo "@{Diese Meldung wird angezeigt}"
+exit1
+``` 
+
+
 ## Funktionen
 
 ### Globale Funktionen
