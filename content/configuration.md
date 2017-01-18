@@ -219,4 +219,7 @@ Die folgende Konfiguration wird der Applikation über Java Systemproperties zur 
 | amw.consumableSoftlinkResourceTypes       |    x     | Commaseparated List of Resource Types                             |          |
 | amw.externalResourceBacklinkSchema        |    x     | http/https                                                        |          |
 | amw.externalResourceBacklinkHost          |    x     | host for the backlink                                             |          |
+| amw.externalResourceBacklinkHost          |    x     | host for the backlink                                             |          |
+| amw.loadInitialSchemaAndData              |    x     | if the initial Data Changes set is executed during startup            |    false    |
+| amw.createNotExistingDirectoriesOnStartUp |    x     | if the directories for generation, logs, symulation should be created during startup    |    false    |
 
