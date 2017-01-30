@@ -1,6 +1,6 @@
-# AMW Dokumentation
+# Liima Dokumentation
 
-Dies ist die AMW Dokumentation und ist in folgende Themen aufgeteilt.
+Dies ist die Liima Dokumentation und ist in folgende Themen aufgeteilt.
 
 ## Inhalt
 
