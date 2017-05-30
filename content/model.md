@@ -90,6 +90,7 @@ Informationen von einem Deployment sind in allen Freemarker Templates unter `${d
 * jobCreationDate: Datum an dem das Deployment erstellt wurde
 * requestUser: User der das Deployment erstellt hat
 * runtime: Referenz auf die Runtime Ressource von diesem Deployment
+* params._paramName_: Parameter die einem Deployment mitgegeben wurden.
 
 ## Beziehungen / Relations
 
