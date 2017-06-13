@@ -7,11 +7,11 @@ Grundsätzlich besteht das Modell in dem Sie die Konfiguration in AMW abbilden a
 * Node - Der Node in Kombination mit einem AS entspricht einem Deployment des AS auf einem Server
 * Runtime - Die Runtime definiert am AS um welchen Applikationsserver es sich handelt, typischerweise JBoss EAP 6, JBoss EAP 7, Websphere, ...
 * Resources - Als Resourcen werden alle anderen Elemente bezeichnet, die an einem AS, einer App, einer Node oder Runtime als Abhängigkeiten angehängt werden können
- * Datenbank an Applikation
- * Webservice SOAP / REST
- * Queue
- * Zertifikate
- * ...
+  * Datenbank an Applikation
+  * Webservice SOAP / REST
+  * Queue
+  * Zertifikate
+  * ...
  
  
 Allgemein sprechen wir bei den obigen Elementen von **Ressourcen** die zu einander mittels Relations in Beziehung stehen. 
