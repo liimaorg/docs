@@ -13,7 +13,7 @@
 |			|UPDATE		|Darf editieren										|
 |			|DELETE		|Darf löschen										|
 |RESOURCE		|UPDATE		|Darf Resourcen, deren Relations, Properties und Templates editieren			|
-|			|		|Um PropertyDescriptoren einer Resource zu erstellen/editieren/löschne wird die SAVE_PROPERTY Berechtigung benötigt	|
+|			|		|Um PropertyDescriptoren einer Resource zu erstellen/editieren/löschen wird die SAVE_PROPERTY Berechtigung benötigt	|
 |			|		|Um Functions einer Resource zu betrachten/erstellen/editieren/löschen wird eine entsprechende AMWFUNCTION Berechtigung benötigt	|
 |			|		|Um Passwörter im Klartext zu sehen, wird eine DECRYPT_PROPERTIES Berechtigung benötigt	|
 |RESOURCETYPE		|READ		|Darf ResourceTypen betrachten								|
