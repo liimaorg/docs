@@ -10,6 +10,7 @@ Dies ist die Liima Dokumentation und ist in folgende Themen aufgeteilt.
 1. [Konfiguration](content/configuration.md)
 1. [Modell](content/model.md)
 1. [Template](content/template.md)
+1. [Berechtigungen](content/permissions.md)
 
 
 
