@@ -3,9 +3,9 @@
 
 |Berechtigung		|Action		|Beschrieb										|
 |-----------------------|---------------|---------------------------------------------------------------------------------------|
-|DEPLOYMENT		|ALL		|Darf deployen, die Action hat keinen Einfluss						|
+|DEPLOYMENT		|ALL		|Darf deployen, die Action hat keinen Einfluss. Wer darf Request machen?						|
 |COPY_FROM_RESOURCE	|UPDATE		|Darf die Eigenschaften von einer Resource oder eines Predecessor kopieren		|
-|RELEASE		|CREATE		|Darf speichern										|
+|RELEASE		|CREATE		|Darf speichern. Siehe https://github.com/liimaorg/liima/issues/107								|
 |			|READ		|Darf betrachten									|
 |			|UPDATE		|Darf speichern										|
 |			|DELETE		|Darf löschen										|
