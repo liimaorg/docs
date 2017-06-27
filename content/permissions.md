@@ -33,5 +33,5 @@
 |			|DELETE		|Darf Functions löschen									|
 
 ## Caching
-Die alten globalen Permissions werden in einem Singelton gecached, dass alle 20 Minuten updated wird.  
-Die neuem gescopten Permissions werden momentan nur wo nötig in der JSF User Sessions gecached. Das bedeutet, dass Änderungen erst sichtbar sind, nach dem eine neue Session für den User erstellt wurde (durch Logout oder nach Ablauf der Session).
+Sämtliche Permissions werden in einem Singelton gecached, welcher alle 20 Minuten oder beim Hinzufügen, Verändern oder Löschen einer Permission aktualisiert wird.  
+Die neuem gescopten Permissions werden momentan nur wo nötig in der JSF User Sessions gecached. Das bedeutet, dass Änderungen an den Permissions `RESOURCE & RESOURCETYPE (READ & DELETE)` erst sichtbar werden, nach dem eine neue Session für den User erstellt wurde (durch Logout oder nach Ablauf der Session).
