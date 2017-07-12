@@ -32,6 +32,7 @@
 |			|UPDATE		|Darf Functions bearbeiten								|
 |			|DELETE		|Darf Functions löschen									|
 
+## Default Rollen
 In Liima sind einige Default Rollen definiert. Diese sind so aufgebaut, dass sie miteinander kombiniert werden müssen um eine komplette Rolle zu ergeben, z.B. ein Benutzer braucht folgende Rollen um alle Konfigurations-Rechte in Liima zu erhalten: viewer, server_admin, config_admin, shakedown_admin, app_developer.
 Die Rollen werden in Deployment- und Konfigurationsrollen unterschieden. Deployment Rollen kontorollieren ob der User Deployments auf bestimmten Umgebung confirmen können, Konfigurationsrollen bestimmen was konfiguriert werden kann, auch Liima Settings.
 
