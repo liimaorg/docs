@@ -33,7 +33,7 @@
 |			|DELETE		|Darf Functions löschen									|
 
 ## Default Rollen
-In Liima sind einge default Rollen definiert. Diese sind so aufgebaut, dass sie miteinander kombiniert werden müssen um eine komplette Rolle zu ergeben, z.B. ein Admin Benutzer der braucht folgende Rollen um alle config Rechte in Liima zu haben: viewer, server_admin, config_admin, shakedown_admin, admin_deployer
+In Liima sind einge default Rollen definiert. Diese sind so aufgebaut, dass sie miteinander kombiniert werden müssen um eine komplette Rolle zu ergeben, z.B. ein Admin Benutzer der braucht folgende Rollen um alle config Rechte in Liima zu haben: viewer, server_admin, config_admin, shakedown_admin, app_developer
 
 |Rolle              		 |Deployment Rolle  |Beschrieb										|
 |------------------------|------------------|------------------------------------------------------------------------------------|
