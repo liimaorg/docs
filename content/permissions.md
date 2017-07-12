@@ -33,23 +33,23 @@
 |			|DELETE		|Darf Functions löschen									|
 
 ## Default Rollen
-In Liima sind einge default Rollen definiert. Diese sind so aufgebaut, dass sie miteinander kombiniert werden müssen um eine komplette Rolle zu ergeben, z.B. ein Admin Benutzer der braucht folgende Rollen um alle config Rechte in Liima zu haben: viewer, server_admin, config_admin, shakedown_admin, app_developer.
+In Liima sind einige default Rollen definiert. Diese sind so aufgebaut, dass sie miteinander kombiniert werden müssen um eine komplette Rolle zu ergeben, z.B. ein Admin Benutzer der braucht folgende Rollen um alle config Rechte in Liima zu haben: viewer, server_admin, config_admin, shakedown_admin, app_developer.
 Die Rollen werden in Deployment- und Konfigurationsrollen unterschieden. Deployment Rollen kontorollieren nur ob der User Deployments auf bestimmten Umgebung confirmen können.
 
 |Rolle              		 |Deployment Rolle  |Beschrieb										|
 |------------------------|------------------|------------------------------------------------------------------------------------|
 |admin_deployer		       |x                 | Deploy Rechte auf Produktion, Request Rechte auf allen anderen |
-|admin_developer		     |                  | |
+|admin_developer		     |                  | Kann Ressourcen von Typ ApplicationServer und Application erstelle sowie CopyFrom dort ausführen. Kann ebenfalls auf Ressourcen von Typ ApplicationServer relations verwalten.
 |app_developer		       |                  | Hat volle Rechte auf Ressourcen vom Type Application. Darf Passwörter nicht sehen/editieren.  |
-|config_admin		         |                  | Enthält alle zusätztlichen Rechte die zur Administration nötig sind, die nicht schon in den anderen Konfigurationsrollen enthalten sind.|
-|developer_deployer	     |x                 | Deploy Rechte auf dev Umgbungen, Request rechte auf allen anderen |
+|config_admin		         |                  | Enthält alle zusätzlichen Rechte die zur Administration nötig sind, die nicht schon in den anderen Konfigurationsrollen enthalten sind.|
+|developer_deployer	     |x                 | Deploy Rechte auf dev Umgebungen, Request rechte auf allen anderen |
 |env_management_deployer |x                 | Deploy Rechte auf Integrationsumgebungen, Request rechte auf allen anderen  |
 |overwrite_foreignables	 |                  | |
-|server_admin		         |                  | |
-|shakedown_admin		     |                  | Kann Shakedown Test konfigurieren|
-|shakedown_tester		     |                  | Kann Shakedown Tests durchführen|
-|test_deployer		       |x                 | Deploy Rechte auf Testumgebungen, Request rechte auf allen anderen |
-|viewer		               |                  | Nur Leserechte. Darf Passwörter nicht sehen, kann keine Request erstellen, darf Testgenerate nich aufrufen |
+|server_admin		         |                  | Kann Default Ressourcen erstellen und löschen sowie Relations von AppServer hinzufügen und löschen.|
+|shakedown_admin		     |                  | Kann Shakedown Test konfigurieren |
+|shakedown_tester		     |                  | Kann Shakedown Tests durchführen |
+|test_deployer		       |x                 | Deploy Rechte auf Testumgebungen, Request Rechte auf allen Anderen |
+|viewer		               |                  | Nur Leserechte. Darf Passwörter nicht sehen, kann keine Request erstellen, darf Testgenerate nicht aufrufen |
 
 ## Caching
 Sämtliche Permissions werden in einem Singelton gecached, welcher alle 20 Minuten oder beim Hinzufügen, Verändern oder Löschen einer Permission aktualisiert wird.  
