@@ -23,12 +23,6 @@
 |			|		|Damit Type Relations hinzugefügt werden können, wird zusätzlich eine RESOURCETYPE READ Berechtigung für die Slave-Resource benötigt	|
 |			|		|Um Functions eines ResourceType zu betrachten/erstellen/editieren/löschen wird eine entsprechende RESOURCETYPE_AMWFUNCTION Berechtigung benötigt	|
 |			|		|Um Passwörter im Klartext zu sehen, wird eine RESOURCETYPE_PROPERTY_DECRYPT Berechtigung benötigt	|
-|RESOURCE_TEMPLATE	|READ		|Darf Resource Templates betrachten							|
-|			|UPDATE		|Darf Resource Templates editieren							|
-|			|DELETE		|Darf Resource Templates löschen							|
-|RESOURCETYPE_TEMPLATE	|READ		|Darf ResourceTyp Templates betrachten							|
-|			|UPDATE		|Darf ResourceTyp Templates editieren							|
-|			|DELETE		|Darf ResourceTyp Templates löschen							|
 |RESOURCE_AMWFUNCTION		|CREATE		|Darf Functions für Resourcen erstellen								|
 |			|READ		|Darf Functions betrachten								|
 |			|UPDATE		|Darf Functions bearbeiten								|
@@ -37,6 +31,17 @@
 |			|READ		|Darf Functions betrachten								|
 |			|UPDATE		|Darf Functions bearbeiten								|
 |			|DELETE		|Darf Functions löschen									|
+|RESOURCE_PROPERTY_DECRYPT		|ALL		|Darf Passwörter im Klartext sehen/editieren								|
+|  		| 	|Um die Verschlüsselung von Properties ein oder auszuschalten, darf die Berechtigung nicht auf eine spezifische Umgebung eingeschränkt sein 								|
+|RESOURCETYPE_PROPERTY_DECRYPT		|ALL		|Darf Passwörter im Klartext sehen/editieren								|
+|  		| 	|Um die Verschlüsselung von Properties ein oder auszuschalten, darf die Berechtigung nicht auf eine spezifische Umgebung eingeschränkt sein 								|
+|RESOURCE_TEMPLATE	|READ		|Darf Resource Templates betrachten							|
+|			|UPDATE		|Darf Resource Templates editieren							|
+|			|DELETE		|Darf Resource Templates löschen							|
+|RESOURCETYPE_TEMPLATE	|READ		|Darf ResourceTyp Templates betrachten							|
+|			|UPDATE		|Darf ResourceTyp Templates editieren							|
+|			|DELETE		|Darf ResourceTyp Templates löschen							|
+
 
 ## Default Rollen
 In Liima sind einige Default Rollen definiert. Diese sind so aufgebaut, dass sie miteinander kombiniert werden müssen um eine komplette Rolle zu ergeben, z.B. ein Benutzer braucht folgende Rollen um alle Konfigurations-Rechte in Liima zu erhalten: viewer, server_admin, config_admin, shakedown_admin, app_developer.
