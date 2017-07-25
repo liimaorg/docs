@@ -4,7 +4,8 @@
 |Berechtigung		|Action		|Beschrieb										|
 |-----------------------|---------------|---------------------------------------------------------------------------------------|
 |DEPLOYMENT		|ALL		|Darf deployen, die Action hat keinen Einfluss. Wer darf Request machen?						|
-|COPY_FROM_RESOURCE	|UPDATE		|Darf die Eigenschaften von einer Resource oder eines Predecessor kopieren		|
+|RESOURCE_RELEASE_COPY_FROM_RESOURCE	|UPDATE		|Darf die Eigenschaften von einer Resource oder eines Predecessor kopieren		|
+|   	|   | Es wird zusätzlich eine RESOURCE READ Berechtigung auf der Source-Resource benötigt		|
 |RELEASE (settings)		|CREATE		|Darf erstellen							|
 |			|READ		|Darf betrachten									|
 |			|UPDATE		|Darf editieren										|
@@ -22,13 +23,17 @@
 |			|		|Damit Type Relations hinzugefügt werden können, wird zusätzlich eine RESOURCETYPE READ Berechtigung für die Slave-Resource benötigt	|
 |			|		|Um Functions eines ResourceType zu betrachten/erstellen/editieren/löschen wird eine entsprechende RESOURCETYPE_AMWFUNCTION Berechtigung benötigt	|
 |			|		|Um Passwörter im Klartext zu sehen, wird eine RESOURCETYPE_PROPERTY_DECRYPT Berechtigung benötigt	|
-|TEMPLATE_RESOURCE	|READ		|Darf Resource Templates betrachten							|
+|RESOURCE_TEMPLATE	|READ		|Darf Resource Templates betrachten							|
 |			|UPDATE		|Darf Resource Templates editieren							|
 |			|DELETE		|Darf Resource Templates löschen							|
-|TEMPLATE_RESOURCETYPE	|READ		|Darf ResourceTyp Templates betrachten							|
+|RESOURCETYPE_TEMPLATE	|READ		|Darf ResourceTyp Templates betrachten							|
 |			|UPDATE		|Darf ResourceTyp Templates editieren							|
 |			|DELETE		|Darf ResourceTyp Templates löschen							|
-|AMWFUNCTION		|CREATE		|Darf Functions erstellen								|
+|RESOURCE_AMWFUNCTION		|CREATE		|Darf Functions für Resourcen erstellen								|
+|			|READ		|Darf Functions betrachten								|
+|			|UPDATE		|Darf Functions bearbeiten								|
+|			|DELETE		|Darf Functions löschen									|
+|RESOURCETYPE_AMWFUNCTION		|CREATE		|Darf Functions für Resourcetypen erstellen								|
 |			|READ		|Darf Functions betrachten								|
 |			|UPDATE		|Darf Functions bearbeiten								|
 |			|DELETE		|Darf Functions löschen									|
