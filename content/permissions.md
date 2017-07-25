@@ -4,13 +4,8 @@
 |Berechtigung		|Action		|Beschrieb										|
 |-----------------------|---------------|---------------------------------------------------------------------------------------|
 |DEPLOYMENT		|ALL		|Darf deployen, die Action hat keinen Einfluss. Wer darf Request machen?						|
-|RESOURCE_RELEASE_COPY_FROM_RESOURCE	|UPDATE		|Darf die Eigenschaften von einer Resource oder eines Predecessor kopieren		|
-|   	|   | Es wird zusätzlich eine RESOURCE READ Berechtigung auf der Source-Resource benötigt		|
 |RELEASE (settings)		|CREATE		|Darf erstellen							|
 |			|READ		|Darf betrachten									|
-|			|UPDATE		|Darf editieren										|
-|			|DELETE		|Darf löschen										|
-|SHAKEDOWNTEST		|CREATE		|Darf erstellen										|
 |			|UPDATE		|Darf editieren										|
 |			|DELETE		|Darf löschen										|
 |RESOURCE		|READ		|Darf Resourcen betrachten								|
@@ -41,6 +36,13 @@
 |RESOURCETYPE_TEMPLATE	|READ		|Darf ResourceTyp Templates betrachten							|
 |			|UPDATE		|Darf ResourceTyp Templates editieren							|
 |			|DELETE		|Darf ResourceTyp Templates löschen							|
+|RESOURCE_RELEASE_COPY_FROM_RESOURCE	|UPDATE		|Darf die Eigenschaften von einer Resource oder eines Predecessor kopieren		|
+|   	|   | Es wird zusätzlich eine RESOURCE READ Berechtigung auf der Source-Resource benötigt		|
+|RESOURCE_TEST_GENERATION		|READ		|Darf Testgeneration starten										|
+|RESOURCE_TEST_GENERATION_RESULT		|READ		|Darf die erstellten Tempaltes einer Testgenration sehen.										|
+|SHAKEDOWNTEST		|CREATE		|Darf erstellen										|
+|			|UPDATE		|Darf editieren										|
+|			|DELETE		|Darf löschen										|
 
 
 ## Default Rollen
