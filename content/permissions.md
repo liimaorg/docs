@@ -12,15 +12,16 @@
 |SHAKEDOWNTEST		|CREATE		|Darf erstellen										|
 |			|UPDATE		|Darf editieren										|
 |			|DELETE		|Darf löschen										|
-|RESOURCE		|UPDATE		|Darf Resourcen, deren Relations, Properties und Templates editieren			|
-|			|		|Um PropertyDescriptoren einer Resource zu erstellen/editieren/löschen wird die SAVE_PROPERTY Berechtigung benötigt	|
-|			|		|Um Functions einer Resource zu betrachten/erstellen/editieren/löschen wird eine entsprechende AMWFUNCTION Berechtigung benötigt	|
-|			|		|Um Passwörter im Klartext zu sehen, wird eine DECRYPT_PROPERTIES Berechtigung benötigt	|
+|RESOURCE		|READ		|Darf Resourcen betrachten								|
+| 	  |UPDATE		|Darf Resourcen, deren Relations, Properties und Templates editieren			|
+|			|		|Damit Consumed/Provided Relations hinzugefügt werden können, wird zusätzlich eine RESOURCE READ Berechtigung für die Slave-Resource benötigt	|
+|			|		|Um Functions einer Resource zu betrachten/erstellen/editieren/löschen wird eine entsprechende RESOURCE_AMWFUNCTION Berechtigung benötigt	|
+|			|		|Um Passwörter im Klartext zu sehen, wird eine RESOURCE_PROPERTY_DECRYPT Berechtigung benötigt	|
 |RESOURCETYPE		|READ		|Darf ResourceTypen betrachten								|
 |			|UPDATE		|Darf ResourceTypen, deren Relations, Properties und Templates editieren		|
-|			|		|Um PropertyDescriptoren eines ResourceType zu erstellen/editieren/löschen wird die SAVE_PROPERTY Berechtigung benötigt		|
-|			|		|Um Functions eines ResourceType zu betrachten/erstellen/editieren/löschen wird eine entsprechende AMWFUNCTION Berechtigung benötigt	|
-|			|		|Um Passwörter im Klartext zu sehen, wird eine DECRYPT_PROPERTIES Berechtigung benötigt	|
+|			|		|Damit Type Relations hinzugefügt werden können, wird zusätzlich eine RESOURCETYPE READ Berechtigung für die Slave-Resource benötigt	|
+|			|		|Um Functions eines ResourceType zu betrachten/erstellen/editieren/löschen wird eine entsprechende RESOURCETYPE_AMWFUNCTION Berechtigung benötigt	|
+|			|		|Um Passwörter im Klartext zu sehen, wird eine RESOURCETYPE_PROPERTY_DECRYPT Berechtigung benötigt	|
 |TEMPLATE_RESOURCE	|READ		|Darf Resource Templates betrachten							|
 |			|UPDATE		|Darf Resource Templates editieren							|
 |			|DELETE		|Darf Resource Templates löschen							|
