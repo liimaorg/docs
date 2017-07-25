@@ -33,7 +33,7 @@
 |			|READ		|Darf Functions betrachten								|
 |			|UPDATE		|Darf Functions bearbeiten								|
 |			|DELETE		|Darf Functions löschen									|
-|RESOURCETYPE_AMWFUNCTION		|CREATE		|Darf Functions für Resourcetypen erstellen								|
+|RESOURCETYPE_AMWFUNCTION		|CREATE		|Darf Functions für ResourceTypen erstellen								|
 |			|READ		|Darf Functions betrachten								|
 |			|UPDATE		|Darf Functions bearbeiten								|
 |			|DELETE		|Darf Functions löschen									|
