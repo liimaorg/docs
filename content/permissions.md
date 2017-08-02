@@ -18,7 +18,7 @@ Scoped Permissions tragen den Namen eines Liima Entität Typs (z.B. `RESOURCE`) 
 Global Permissions tragen den Namen von einer Aktion auf ein Liima Objekt (z.B. `SAVE_SETTINGS_PROPTYPE`). Diese Permissions können nicht weiter eingeschränkt werden d.h. sind global. Im Permission GUI sind diese mit `Global` markiert. 
 Die globalen Permissions Regeln nur noch was auf dem JSF GUI angezeigt wird, einzelne alte Berechtigungen, Permissions welche Liima Settings betreffen und die noch nicht auf Scoped Permissions migriert wurden.
 
-## Globale Permissions und ihre Bedeutung
+## Scoped Permissions und ihre Bedeutung
 
 |Berechtigung		|Action		|Beschrieb										|
 |-----------------------|---------------|---------------------------------------------------------------------------------------|
