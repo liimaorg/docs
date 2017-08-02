@@ -1,5 +1,24 @@
 # Berechtigungen
+Die Berechtigungen in Liima sind in global/ungescopte Permissions und scoped Permissions aufgeteilt.
 
+## Scoped Permissions
+Scoped Permissions tragen den Namen eines Liima Entität Typs (z.B. `RESOURCE`) oder eines Subtyps (z.B. `RESOURCE_TEMPLATE`). Berechtigungen auf den Entitäten können weiter eingeschränkt werden: 
+* Action: Aktion die auf der Entität ausgeführt werden kann: `CREATE`, `READ`, `UPDATE`, `DELETE` oder `ALL`. Falls die Aktionen auf der Entität nicht anwendbar sind, wird `ALL` verwendet.
+* Environment: Einschränkung auf Umgebungen
+* Resource Type Categories: Kategorie von Ressourcen auf welche die Permission gelten soll. 
+  * `DEFAULT_ONLY`: Einschränkung auf Default Ressourcen: `APPLICATIONSERVER`, `APPLICATION`, `NODE`
+  * `NON_DEFAULT_ONLY`: alle ausser die Default Ressourcen
+  * `ANY`: keine Einschränkung
+* Resource Type: Ressource Typ auf welche die Berechtigung eingeschränkt werden soll, z.B. Ressource Typ `Webservice`
+* Resource Group: Einschränkung auf eine Ressource Gruppe, z.B. die Applikation `TestApp`
+
+`Resource Type Categories`, `Resource Type` und `Resource Group` sind hierarchisch aufgebaut und schliessen sich gegenseitig aus. Z.B. wenn eine `Resource Type Categories` ausgewählt ist, kann `Resource Type` und `Resource Group` nicht mehr angegeben werden.
+
+## Global Permissions
+Global Permissions tragen den Namen von einer Aktion auf ein Liima Objekt (z.B. `SAVE_SETTINGS_PROPTYPE`). Diese Permissions können nicht weiter eingeschränkt werden d.h. sind global. Im Permission GUI sind diese mit `Global` markiert. 
+Die globalen Permissions Regeln nur noch was auf dem JSF GUI angezeigt wird, einzelne alte Berechtigungen, Permissions welche Liima Settings betreffen und die noch nicht auf Scoped Permissions migriert wurden.
+
+## Globale Permissions und ihre Bedeutung
 
 |Berechtigung		|Action		|Beschrieb										|
 |-----------------------|---------------|---------------------------------------------------------------------------------------|
