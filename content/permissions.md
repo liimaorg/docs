@@ -28,15 +28,17 @@ Die globalen Permissions Regeln nur noch was auf dem JSF GUI angezeigt wird, ein
 |			|UPDATE		|Darf editieren										|
 |			|DELETE		|Darf löschen										|
 |RESOURCE		|READ		|Darf Resourcen betrachten								|
-| 	  |UPDATE		|Darf Resourcen, deren Relations, Properties und Templates editieren			|
+| 	  |UPDATE		|Darf Resourcen, deren Relations und Properties editieren			|
 |			|		|Damit Consumed/Provided Relations hinzugefügt werden können, wird zusätzlich eine RESOURCE READ Berechtigung für die Slave-Resource benötigt	|
 |			|		|Um Functions einer Resource zu betrachten/erstellen/editieren/löschen wird eine entsprechende RESOURCE_AMWFUNCTION Berechtigung benötigt	|
 |			|		|Um Passwörter im Klartext zu sehen, wird eine RESOURCE_PROPERTY_DECRYPT Berechtigung benötigt	|
+|			|		|Um Templates zu editieren/hinzufügen/löschen, wird eine RESOURCE_TEMPLATE Berechtigung benötigt	|
 |RESOURCETYPE		|READ		|Darf ResourceTypen betrachten								|
-|			|UPDATE		|Darf ResourceTypen, deren Relations, Properties und Templates editieren		|
+|			|UPDATE		|Darf ResourceTypen, deren Relations und Properties editieren		|
 |			|		|Damit Type Relations hinzugefügt werden können, wird zusätzlich eine RESOURCETYPE READ Berechtigung für die Slave-Resource benötigt	|
 |			|		|Um Functions eines ResourceType zu betrachten/erstellen/editieren/löschen wird eine entsprechende RESOURCETYPE_AMWFUNCTION Berechtigung benötigt	|
 |			|		|Um Passwörter im Klartext zu sehen, wird eine RESOURCETYPE_PROPERTY_DECRYPT Berechtigung benötigt	|
+|			|		|Um Templates zu editieren/hinzufügen/löschen, wird eine RESOURCETYPE_TEMPLATE Berechtigung benötigt	|
 |RESOURCE_AMWFUNCTION		|CREATE		|Darf Functions für Resourcen erstellen								|
 |			|READ		|Darf Functions betrachten								|
 |			|UPDATE		|Darf Functions bearbeiten								|
@@ -49,10 +51,12 @@ Die globalen Permissions Regeln nur noch was auf dem JSF GUI angezeigt wird, ein
 |  		| 	|Um die Verschlüsselung von Properties ein oder auszuschalten, darf die Berechtigung nicht auf eine spezifische Umgebung eingeschränkt sein 								|
 |RESOURCETYPE_PROPERTY_DECRYPT		|ALL		|Darf Passwörter im Klartext sehen/editieren								|
 |  		| 	|Um die Verschlüsselung von Properties ein oder auszuschalten, darf die Berechtigung nicht auf eine spezifische Umgebung eingeschränkt sein 								|
-|RESOURCE_TEMPLATE	|READ		|Darf Resource Templates betrachten							|
+|RESOURCE_TEMPLATE	|CREATE		|Darf Resource Templates erstellen							|
+|  	|READ		|Darf Resource Templates betrachten							|
 |			|UPDATE		|Darf Resource Templates editieren							|
 |			|DELETE		|Darf Resource Templates löschen							|
-|RESOURCETYPE_TEMPLATE	|READ		|Darf ResourceTyp Templates betrachten							|
+|RESOURCETYPE_TEMPLATE	|CREATE		|Darf ResourceTyp Templates erstellen							|
+|   |READ		|Darf ResourceTyp Templates betrachten							|
 |			|UPDATE		|Darf ResourceTyp Templates editieren							|
 |			|DELETE		|Darf ResourceTyp Templates löschen							|
 |RESOURCE_RELEASE_COPY_FROM_RESOURCE	|UPDATE		|Darf die Eigenschaften von einer Resource oder eines Predecessor kopieren		|
