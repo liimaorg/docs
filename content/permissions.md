@@ -22,7 +22,10 @@ Die globalen Permissions Regeln nur noch was auf dem JSF GUI angezeigt wird, ein
 
 |Berechtigung		|Action		|Beschrieb										|
 |-----------------------|---------------|---------------------------------------------------------------------------------------|
-|DEPLOYMENT		|ALL		|Darf deployen, die Action hat keinen Einfluss. Wer darf Request machen?						|
+|DEPLOYMENT		|CREATE		|Darf Deployment **Requests** erstelle				|
+|			|READ		  |Darf die Deployment Seite sehen			|
+|			|UPDATE		|Darf Deployment Requests confirment und das Datum updaten		|
+|			|DELETE  |Darf Deployments rejecten |
 |RELEASE (settings)		|CREATE		|Darf erstellen							|
 |			|READ		|Darf betrachten									|
 |			|UPDATE		|Darf editieren										|
