@@ -62,7 +62,7 @@ Die globalen Permissions Regeln nur noch was auf dem JSF GUI angezeigt wird, ein
 |   |READ		|Darf ResourceTyp Templates betrachten							|
 |			|UPDATE		|Darf ResourceTyp Templates editieren							|
 |			|DELETE		|Darf ResourceTyp Templates löschen							|
-|RESOURCE_RELEASE_COPY_FROM_RESOURCE	|UPDATE		|Darf die Eigenschaften von einer Resource oder eines Predecessor kopieren		|
+|RESOURCE_RELEASE_COPY_FROM_RESOURCE	|ALL		|Darf die Eigenschaften von einer Resource oder eines Predecessor kopieren		|
 |   	|   | Es wird zusätzlich eine RESOURCE READ Berechtigung auf der Source-Resource benötigt		|
 |RESOURCE_TEST_GENERATION		|READ		|Darf Testgeneration starten										|
 |RESOURCE_TEST_GENERATION_RESULT		|READ		|Darf die erstellten Tempaltes einer Testgenration sehen.										|
