@@ -22,7 +22,7 @@ Die globalen Permissions Regeln nur noch was auf dem JSF GUI angezeigt wird, ein
 
 |Berechtigung		|Action		|Beschrieb										|
 |-----------------------|---------------|---------------------------------------------------------------------------------------|
-|DEPLOYMENT		|CREATE		|Darf Deployment **Requests** erstelle				|
+|DEPLOYMENT		|CREATE		|Darf Deployment **Requests** erstellen				|
 |			|READ		  |Darf die Deployment Seite sehen			|
 |			|UPDATE		|Darf Deployment Requests confirment und das Datum updaten		|
 |			|DELETE  |Darf Deployments rejecten |
@@ -30,8 +30,9 @@ Die globalen Permissions Regeln nur noch was auf dem JSF GUI angezeigt wird, ein
 |			|READ		|Darf betrachten									|
 |			|UPDATE		|Darf editieren										|
 |			|DELETE		|Darf löschen										|
-|RESOURCE		|READ		|Darf Resourcen betrachten								|
-| 	  |UPDATE		|Darf Resourcen, deren Relations und Properties editieren			|
+|RESOURCE		|CREATE		|Darf Resourcen erstellen								|
+| 		|READ		|Darf Resourcen betrachten								|
+| 	 |UPDATE		|Darf Resourcen, deren Relations und Properties editieren			|
 |			|		|Damit Consumed/Provided Relations hinzugefügt werden können, wird zusätzlich eine RESOURCE READ Berechtigung für die Slave-Resource benötigt	|
 |			|		|Um Functions einer Resource zu betrachten/erstellen/editieren/löschen wird eine entsprechende RESOURCE_AMWFUNCTION Berechtigung benötigt	|
 |			|		|Um Passwörter im Klartext zu sehen, wird eine RESOURCE_PROPERTY_DECRYPT Berechtigung benötigt	|
