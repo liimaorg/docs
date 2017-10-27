@@ -83,7 +83,7 @@ Informationen von einem Deployment sind in allen Freemarker Templates unter `${d
 * amwLogFile: Log File für dieses Deployment z.B "/home/jboss/liima/logs/45982_node_01.log" 
 * targetLogPrefix: Alle logs mit diesem Prefix werdem im Log GUI angezeigt z.B. "/home/jboss/liima/logs/45982\_" 
 * generationStateDate: Datum an die Generierung der Templates begonnen hat
-* generationModus: Aktueller Modus in dem sich das Deployment befindet z.B. "PREDEPLOY" 
+* generationModus: Aktueller Modus in dem sich das Deployment befindet z.B. "PREDEPLOY", "DEPLOY"
 * generationdir: Ordner im der die generierten Templates liegen z.B. "/home/jboss/liima/build/scriptTestAs/Y/node_01/45982" 
 * confirmationDate: Datum an dem das Deployment bestätigt wurde
 * confirmationUser: User der das Deployment bestätigt hat
