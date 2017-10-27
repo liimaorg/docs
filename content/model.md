@@ -87,10 +87,17 @@ Informationen von einem Deployment sind in allen Freemarker Templates unter `${d
 * generationdir: Ordner im der die generierten Templates liegen z.B. "/home/jboss/liima/build/scriptTestAs/Y/node_01/45982" 
 * confirmationDate: Datum an dem das Deployment bestätigt wurde
 * confirmationUser: User der das Deployment bestätigt hat
+* :
 * jobCreationDate: Datum an dem das Deployment erstellt wurde
 * requestUser: User der das Deployment erstellt hat
 * runtime: Referenz auf die Runtime Ressource von diesem Deployment
-* params._paramName_: Parameter die einem Deployment mitgegeben wurden.
+* release: Deployment release (hash)
+  * id: Release Id
+  * name: Release Name
+  * installationDate: Release Datum
+* params._paramName_: Parameter die einem Deployment mitgegeben wurden 
+* nodejob: Hash der NodeJobs
+  * id: id vom NodeJob
 
 ## Beziehungen / Relations
 
