@@ -138,6 +138,38 @@ ${deploymentId}
 ${deploy}
 
 ```
+### Templates
+
+Der Zugriff auf Templates erfolgt im Modell wie folgt:
+
+Generell auf Globaler Ebene, beinhaltet sämtliche generieten Templates
+
+```
+${templatefiles.key}
+```
+
+Templates auf Resource ebene, beinhaltet auch die noch nicht generierten Templates, jedoch fehlt dort natürlich dann der Inhalt.
+```
+${templates.key}
+```
+Beispiel:
+```
+<#list templates?values as template>
+${template.name}, ${template.path}, ${template.content}
+</#list>
+# oder
+<#list templates?keys as key> 
+${key} = ${templates[key].name}, ${templates[key].path}, ${templates[key].content}
+</#list> 
+```
+oder der Zugriff auf ein konkretes Template
+```
+<#assign keyValue="template.name">
+${templates[keyValue]path}
+#oder
+${templates["template.name"]path}
+```
+
 
 
 ### Relations
