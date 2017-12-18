@@ -19,7 +19,11 @@ Global Permissions tragen den Namen von einer Aktion auf ein Liima Objekt (z.B. 
 Die globalen Permissions Regeln nur noch was auf dem JSF GUI angezeigt wird, einzelne alte Berechtigungen, Permissions welche Liima Settings betreffen und die noch nicht auf Scoped Permissions migriert wurden.
 
 ### Selbstverwaltung von Permissions
-Rollen oder Benutzer, welche die globale Permission `PERMISSION_DELEGATION` besitzen, können ihnen gewährte Berechtigungen an andere Benutzer weitergeben. 
+Rollen oder Benutzer, welche die globale Permission `PERMISSION_DELEGATION` besitzen, können ihnen gewährte Berechtigungen an andere Benutzer weitergeben.
+
+Rollen oder Benutzer, welche die globale Permission `ADD_ADMIN_PERMISSIONS_ON_CREATED_RESOURCE` besitzen, erhalten automatisch "Resourcen-Administrationsberechtigungen" auf allen Resourcen, welche sie selber erstellen.
+
+Resourcen-Adiminstrationsberechtigungen: `RESOURCE`, `RESOURCE_*` und `DEPLOYMENT` - jeweils mit Action `ALL`.
 
 ## Scoped Permissions und ihre Bedeutung
 
