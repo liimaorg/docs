@@ -5,7 +5,7 @@ Dies ist die Liima Dokumentation und ist in folgende Themen aufgeteilt.
 ## Inhalt
 
 1. [Übersicht](content/overview.md)
-1. [Präsentation Features](content/feature-presentation/AMW_Features.pdf)
+1. [Präsentation Features](content/feature-presentation/Liima.pdf)
 1. [Installation](content/installation.md)
 1. [Konfiguration](content/configuration.md)
 1. [Modell](content/model.md)
